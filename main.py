@@ -1,151 +1,145 @@
-input.onButtonPressed(Button.A, function () {
-    basic.showString("Starting 25 Min Focus Session")
-    for (let index = 0; index <= 24; index++) {
-        basic.showNumber(25 - index)
+def on_button_pressed_a():
+    global index3
+    basic.show_string("Starting 25 Min Focus Session")
+    for index in range(25):
+        basic.show_number(25 - index)
         basic.pause(60000)
-    }
     index3 = 25
-    while (acknowledged == false) {
-        basic.showLeds(`
+    while acknowledged == False:
+        basic.show_leds("""
             . . . . .
             . . . . .
             . . # . .
             . . . . .
             . . . . .
-            `)
+            """)
         basic.pause(18)
-        basic.showLeds(`
+        basic.show_leds("""
             . . . . .
             . # # # .
             . # # # .
             . # # # .
             . . . . .
-            `)
+            """)
         basic.pause(18)
-        basic.showLeds(`
+        basic.show_leds("""
             # # # # #
             # # # # #
             # # # # #
             # # # # #
             # # # # #
-            `)
+            """)
         basic.pause(18)
-        basic.showLeds(`
+        basic.show_leds("""
             . . . . .
             . # # # .
             . # # # .
             . # # # .
             . . . . .
-            `)
+            """)
         basic.pause(18)
-        basic.showLeds(`
+        basic.show_leds("""
             . . . . .
             . . . . .
             . . # . .
             . . . . .
             . . . . .
-            `)
+            """)
         basic.pause(18)
-        basic.showLeds(`
+        basic.show_leds("""
             . . . . .
             . . . . .
             . . . . .
             . . . . .
             . . . . .
-            `)
+            """)
         basic.pause(18)
-        basic.showLeds(`
+        basic.show_leds("""
             . . . . .
             . # # # .
             # # # # #
             # # # # #
             . # # # .
-            `)
+            """)
         basic.pause(18)
-    }
-    basic.showString("Starting 5 Min Break")
-    for (let index2 = 0; index2 <= 4; index2++) {
-        basic.showNumber(5 - index2)
+    basic.show_string("Starting 5 Min Break")
+    for index2 in range(5):
+        basic.show_number(5 - index2)
         basic.pause(60000)
-    }
-    basic.showNumber(0)
-    basic.pause(5000)
-    basic.showLeds(`
-        . . . . .
-        . # # # .
-        # # # # #
-        # # # # #
-        . # # # .
-        `)
-})
-input.onButtonPressed(Button.B, function () {
-    if (index32 == 25) {
-        acknowledged = true
-    }
-})
-input.onGesture(Gesture.Shake, function () {
-    if (index32 == 25) {
-        acknowledged = true
-    }
-})
-let index32 = 0
-let acknowledged = false
-let index3 = 0
-basic.showLeds(`
+    basic.show_number(0)
+input.on_button_pressed(Button.A, on_button_pressed_a)
+
+def on_button_pressed_b():
+    global acknowledged
+    if index32 == 25:
+        acknowledged = True
+input.on_button_pressed(Button.B, on_button_pressed_b)
+
+def on_gesture_shake():
+    global acknowledged
+    if index32 == 25:
+        acknowledged = True
+input.on_gesture(Gesture.SHAKE, on_gesture_shake)
+
+index32 = 0
+acknowledged = False
+index3 = 0
+basic.show_leds("""
     . . . . .
     . . . . .
     . . # . .
     . . . . .
     . . . . .
-    `)
+    """)
 basic.pause(18)
-basic.showLeds(`
+basic.show_leds("""
     . . . . .
     . # # # .
     . # # # .
     . # # # .
     . . . . .
-    `)
+    """)
 basic.pause(18)
-basic.showLeds(`
+basic.show_leds("""
     # # # # #
     # # # # #
     # # # # #
     # # # # #
     # # # # #
-    `)
+    """)
 basic.pause(18)
-basic.showLeds(`
+basic.show_leds("""
     . . . . .
     . # # # .
     . # # # .
     . # # # .
     . . . . .
-    `)
+    """)
 basic.pause(18)
-basic.showLeds(`
+basic.show_leds("""
     . . . . .
     . . . . .
     . . # . .
     . . . . .
     . . . . .
-    `)
+    """)
 basic.pause(18)
-basic.showLeds(`
+basic.show_leds("""
     . . . . .
     . . . . .
     . . . . .
     . . . . .
     . . . . .
-    `)
+    """)
 basic.pause(18)
-basic.showLeds(`
+basic.show_leds("""
     . . . . .
     . # # # .
     # # # # #
     # # # # #
     . # # # .
-    `)
-basic.forever(function () {
-	
-})
+    """)
+
+def on_forever():
+    pass
+basic.forever(on_forever)
