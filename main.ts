@@ -1,75 +1,31 @@
 input.onButtonPressed(Button.A, function () {
-    basic.showString("Starting 25 Min Focus Session")
     for (let index = 0; index <= 24; index++) {
-        basic.showNumber(25 - index)
-        basic.pause(60000)
+        if (canceled == false) {
+            basic.showNumber(25 - index)
+            basic.pause(60000)
+        } else {
+            break;
+        }
     }
-    index3 = 25
-    while (acknowledged == false) {
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . . # . .
-            . . . . .
-            . . . . .
-            `)
-        basic.pause(18)
-        basic.showLeds(`
-            . . . . .
-            . # # # .
-            . # # # .
-            . # # # .
-            . . . . .
-            `)
-        basic.pause(18)
-        basic.showLeds(`
-            # # # # #
-            # # # # #
-            # # # # #
-            # # # # #
-            # # # # #
-            `)
-        basic.pause(18)
-        basic.showLeds(`
-            . . . . .
-            . # # # .
-            . # # # .
-            . # # # .
-            . . . . .
-            `)
-        basic.pause(18)
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . . # . .
-            . . . . .
-            . . . . .
-            `)
-        basic.pause(18)
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . . . . .
-            . . . . .
-            . . . . .
-            `)
-        basic.pause(18)
-        basic.showLeds(`
-            . . . . .
-            . # # # .
-            # # # # #
-            # # # # #
-            . # # # .
-            `)
-        basic.pause(18)
+    if (canceled == false) {
+        while (acknowledged == false) {
+            doAnimation()
+        }
+        basic.showString("Starting 5 Min Break")
+        for (let index2 = 0; index2 <= 4; index2++) {
+            basic.showNumber(5 - index2)
+            basic.pause(60000)
+        }
+        basic.showNumber(0)
+        basic.pause(5000)
     }
-    basic.showString("Starting 5 Min Break")
-    for (let index2 = 0; index2 <= 4; index2++) {
-        basic.showNumber(5 - index2)
-        basic.pause(60000)
-    }
-    basic.showNumber(0)
-    basic.pause(5000)
+    showPomodoro()
+    canceled = false
+})
+input.onButtonPressed(Button.AB, function () {
+    canceled = true
+})
+function showPomodoro () {
     basic.showLeds(`
         . . . . .
         . # # # .
@@ -77,7 +33,7 @@ input.onButtonPressed(Button.A, function () {
         # # # # #
         . # # # .
         `)
-})
+}
 input.onButtonPressed(Button.B, function () {
     if (index32 == 25) {
         acknowledged = true
@@ -88,64 +44,61 @@ input.onGesture(Gesture.Shake, function () {
         acknowledged = true
     }
 })
+function doAnimation () {
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . # . .
+        . . . . .
+        . . . . .
+        `)
+    basic.pause(18)
+    basic.showLeds(`
+        . . . . .
+        . # # # .
+        . # # # .
+        . # # # .
+        . . . . .
+        `)
+    basic.pause(18)
+    basic.showLeds(`
+        # # # # #
+        # # # # #
+        # # # # #
+        # # # # #
+        # # # # #
+        `)
+    basic.pause(18)
+    basic.showLeds(`
+        . . . . .
+        . # # # .
+        . # # # .
+        . # # # .
+        . . . . .
+        `)
+    basic.pause(18)
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . # . .
+        . . . . .
+        . . . . .
+        `)
+    basic.pause(18)
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        `)
+    basic.pause(18)
+}
 let index32 = 0
 let acknowledged = false
-let index3 = 0
-basic.showLeds(`
-    . . . . .
-    . . . . .
-    . . # . .
-    . . . . .
-    . . . . .
-    `)
-basic.pause(18)
-basic.showLeds(`
-    . . . . .
-    . # # # .
-    . # # # .
-    . # # # .
-    . . . . .
-    `)
-basic.pause(18)
-basic.showLeds(`
-    # # # # #
-    # # # # #
-    # # # # #
-    # # # # #
-    # # # # #
-    `)
-basic.pause(18)
-basic.showLeds(`
-    . . . . .
-    . # # # .
-    . # # # .
-    . # # # .
-    . . . . .
-    `)
-basic.pause(18)
-basic.showLeds(`
-    . . . . .
-    . . . . .
-    . . # . .
-    . . . . .
-    . . . . .
-    `)
-basic.pause(18)
-basic.showLeds(`
-    . . . . .
-    . . . . .
-    . . . . .
-    . . . . .
-    . . . . .
-    `)
-basic.pause(18)
-basic.showLeds(`
-    . . . . .
-    . # # # .
-    # # # # #
-    # # # # #
-    . # # # .
-    `)
+let canceled = false
+doAnimation()
+showPomodoro()
 basic.forever(function () {
 	
 })
