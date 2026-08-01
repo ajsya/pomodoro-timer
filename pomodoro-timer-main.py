@@ -69,7 +69,7 @@ def doFocusTimer():
                 if cancel == True:
                     break
                 i = 0
-                while i < 30:
+                while i < 60:
                     if button_b.was_pressed():
                         cancel = True
                         break
