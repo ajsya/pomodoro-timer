@@ -83,7 +83,7 @@ def doFocusTimer():
 def doBreakTimer():
     for index2 in range(5):
         display.show(5 - index2)
-        sleep(1000)
+        sleep(60000)
     display.show(0)
     sleep(5000)
 
